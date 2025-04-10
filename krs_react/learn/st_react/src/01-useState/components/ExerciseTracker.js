@@ -1,19 +1,11 @@
 import { useState } from "react";
+import { formatDate } from './utils';
 import './ExerciseTracker.css'
 
 function ExerciseTracker() {
   const [name, setName] = useState("");
   const [count, setCount] = useState("");
   const [activities, setActivities] = useState([]);
-
-  const formatDate = (timestamp) => {
-    const date = new Date(timestamp);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-  
-    return `${day}/${month}/${year}`;
-  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,17 +23,24 @@ function ExerciseTracker() {
     setCount("");
   };
 
-  const handleClear = () => {
-    setActivities([]);
-  };
+  // const handleClear = () => {
+  //   setActivities([]);
+  // };
 
-  const handleClearLast = () => {
-    setActivities((prev) => prev.slice(0,-1));
-  };
+  // const handleClearLast = () => {
+  //   setActivities((prev) => prev.slice(0,-1));
+  // };
 
-  const handleClearFirst = () => {
-    setActivities((prev) => prev.slice(1,prev.length));
+  // const handleClearFirst = () => {
+  //   setActivities((prev) => prev.slice(1,prev.length));
+  // };
+
+  const manage = {
+    clearAll: () => setActivities([]),
+    clearFirst: () => setActivities((prev) => prev.slice(1)),
+    clearLast: () => setActivities((prev) => prev.slice(0, -1)),
   };
+  
 
 
   const totalCount = activities.reduce((sum, a) => sum + a.count, 0);
@@ -66,9 +65,9 @@ function ExerciseTracker() {
         />
         <div className="btn-activity">
             <button type="submit">เพิ่มกิจกรรม</button>
-            <button type="button" onClick={handleClear}>ลบกิจกรรมทั้งหมด</button>
-            <button type="button" onClick={handleClearFirst}>ลบกิจกรรมรายการแรก</button>
-            <button type="button" onClick={handleClearLast}>ลบกิจกรรมรายการสุดท้าย</button>
+            <button type="button" onClick={manage.clearAll}>ลบกิจกรรมทั้งหมด</button>
+            <button type="button" onClick={manage.clearFirst}>ลบกิจกรรมรายการแรก</button>
+            <button type="button" onClick={manage.clearLast}>ลบกิจกรรมรายการสุดท้าย</button>
         </div>
         
       </form>
