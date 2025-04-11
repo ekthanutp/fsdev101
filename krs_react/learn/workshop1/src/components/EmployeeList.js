@@ -1,16 +1,13 @@
-// import { useState } from "react";
+const EmployeeList =({employeeList}) =>{
+    return(
+        <ul>
+            {employeeList.map((emp) => (
+                <li key={emp.id}>
+                ID {emp.id} : {emp.name} - {emp.salary}
+                </li>
+            ))}
+        </ul>
+    )
+}
 
-// const [name, setName] = useState("");
-// const [salary, setSalary] = useState("");
-
-// const empForm =()=>{
-//     return(
-//         <div className="empForm">
-//             <ul>
-//                 <li>
-                    
-//                 </li>
-//             </ul>
-//         </div>
-//     )
-// }
+export default EmployeeList
