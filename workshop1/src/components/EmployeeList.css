@@ -1,0 +1,66 @@
+.employee-list-container {
+    margin-top: 2rem;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .employee-list-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+  }
+  
+  .employee-table th,
+  .employee-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .employee-table th {
+    background-color: #f4f4f4;
+    color: #444;
+  }
+  
+  .employee-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .edit-btn {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #b02a37;
+  }
+  

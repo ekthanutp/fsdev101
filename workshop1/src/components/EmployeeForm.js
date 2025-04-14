@@ -1,15 +1,13 @@
 import { useState, useRef, useEffect } from "react";
+import "./EmployeeForm.css"; // ลิงก์ไปไฟล์ CSS
 
 const EmployeeForm = ({ addEmployee }) => {
   const [name, setName] = useState("");
   const [salary, setSalary] = useState("");
-
-  // สร้าง ref สำหรับ input ชื่อพนักงาน
   const nameInputRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!name || !salary) {
       alert("กรุณากรอกให้ครบ");
       return;
@@ -24,38 +22,38 @@ const EmployeeForm = ({ addEmployee }) => {
     addEmployee(newItem);
     setName("");
     setSalary("");
-
-    // โฟกัสที่ input ชื่อพนักงานหลังจาก submit
     nameInputRef.current.focus();
   };
 
-  // ใช้ useEffect เพื่อโฟกัสที่ input ชื่อพนักงานเมื่อหน้าโหลด
   useEffect(() => {
     nameInputRef.current.focus();
-  }, []); // [] หมายถึงจะทำงานครั้งเดียวตอน mount หรือเปิดหน้าครั้งแรก
+  }, []);
 
   return (
-    <div className="handleForm">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>ชื่อพนักงาน</label>
-          {/* ผูก ref กับ input ชื่อพนักงาน */}
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="form">
+        <div className="form-group">
+          <label htmlFor="name" className="form-label">ชื่อพนักงาน</label>
           <input
+            id="name"
             type="text"
-            ref={nameInputRef}  // เพิ่ม ref ที่นี่
+            ref={nameInputRef}
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="form-input"
           />
         </div>
-        <div>
-          <label>เงินเดือน</label>
+        <div className="form-group">
+          <label htmlFor="salary" className="form-label">เงินเดือน</label>
           <input
+            id="salary"
             type="number"
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
+            className="form-input"
           />
         </div>
-        <button type="submit">เพิ่มข้อมูล</button>
+        <button type="submit" className="btn-submit">เพิ่มข้อมูล</button>
       </form>
     </div>
   );
