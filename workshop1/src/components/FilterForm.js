@@ -36,18 +36,8 @@ const FilterForm = ({ onFilterChange, darkMode }) => {
 
   return (
     <div className={`filter-form ${darkMode ? 'dark' : 'light'}`}>
+      <label htmlFor="amount">เลือกจำนวนเงินและเงื่อนไขเพื่อ Filter</label>
       <div className="form-group">
-        <label htmlFor="amount">เลือกจำนวนเงินและเงื่อนไขเพื่อ Filter</label>
-        <input
-          id="amount"
-          type="number"
-          ref={conditionRef}
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          className="form-input"
-        />
-      </div>
-
       <div className="radio-group">
         <label>
           <input
@@ -89,9 +79,20 @@ const FilterForm = ({ onFilterChange, darkMode }) => {
           />
           เท่ากับ
         </label>
+        <div>
+        <input
+          id="amount"
+          type="number"
+          ref={conditionRef}
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          className="form-input"
+        />
         <button className={`btn ${darkMode ? 'dark' : 'light'}`} onClick={handleClick}>
           เลือกค่า
         </button>
+        </div>
+      </div>
       </div>
 
       <div className="form-group range-group">

@@ -1,5 +1,5 @@
 .filter-form {
-    max-width: 500px;
+    max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
     background-color: #fefefe;
@@ -10,7 +10,7 @@
   
   .form-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 1.5rem;
   }
   
