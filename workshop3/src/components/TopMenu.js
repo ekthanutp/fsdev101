@@ -10,8 +10,8 @@ function TopMenu({ activeTab, onChangeTab }) {
 
   return (
     <Tabs value={activeTab} onChange={handleTabChange} centered sx={{ mb: 3,fontFamily: 'Mitr, sans-serif', }}>
-      <Tab icon={<RestaurantIcon />} iconPosition="start" label="ค่าอาหาร" />
-      <Tab icon={<PeopleIcon />} iconPosition="start" label="รายชื่อคน" />
+      <Tab icon={<RestaurantIcon />} iconPosition="start" label="รายการ" />
+      <Tab icon={<PeopleIcon />} iconPosition="start" label="รายชื่อเพื่อน" />
     </Tabs>
   );
 }

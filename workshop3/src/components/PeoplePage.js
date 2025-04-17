@@ -5,25 +5,32 @@ import AddIcon from '@mui/icons-material/Add';
 const COLORS = [
     '#F9D5E5', '#FEC8D8', '#FFDFD3', '#D0F4DE', '#E4F9F5',
     '#C3FBD8', '#FFD6A5', '#FDFFB6', '#CAFFBF', '#B5EAD7',
-    '#B28DFF', '#D0AAFF', '#BDE0FE', '#A2D2FF'
+    '#B28DFF', '#D0AAFF', '#BDE0FE', '#A2D2FF','#000255'
   ];
 
 const isDarkColor = (hex) => {
-    if (!hex) return false;
-    const c = hex.substring(1);
-    const rgb = parseInt(c, 16);
-    const r = (rgb >> 16) & 0xff;
-    const g = (rgb >> 8) & 0xff;
-    const b = rgb & 0xff;
-    const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
-    return brightness < 150;
+  if (!hex || typeof hex !== 'string') return '#000000';
+
+  // Normalize shorthand hex to full form
+  let normalizedHex = hex.startsWith('#') ? hex.slice(1) : hex;
+  if (normalizedHex.length === 3) {
+    normalizedHex = normalizedHex.split('').map((c) => c + c).join('');
+  }
+  if (normalizedHex.length !== 6) return '#000000'; // fallback if invalid
+
+  const r = parseInt(normalizedHex.slice(0, 2), 16);
+  const g = parseInt(normalizedHex.slice(2, 4), 16);
+  const b = parseInt(normalizedHex.slice(4, 6), 16);
+
+  const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+  return brightness < 150
 };
 
 function PeoplePage({ people, setPeople }) {
   const [newPerson, setNewPerson] = useState('');
   const [usedColors, setUsedColors] = useState([]);
 
-  const inputRef = useRef(); // ✅ ref สำหรับ TextField
+  const inputRef = useRef(); //ref สำหรับ TextField ใช้ focus
 
   const getRandomColor = () => {
     const availableColors = COLORS.filter(c => !usedColors.includes(c));
@@ -45,13 +52,12 @@ function PeoplePage({ people, setPeople }) {
       const color = getRandomColor();
       setPeople([...people, { name: newPerson, color }]);
       setNewPerson('');
-      inputRef.current?.focus(); // ✅ ให้โฟกัสช่องกรอกอีกครั้ง
+      inputRef.current?.focus();
     }
   };
 
   return (
     <Box sx={{ mt: 3 }}>
-      {/* Input + Add Button */}
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <TextField
           id="standard-basic"
@@ -59,7 +65,7 @@ function PeoplePage({ people, setPeople }) {
           variant="standard"
           value={newPerson}
           onChange={(e) => setNewPerson(e.target.value)}
-          inputRef={inputRef} // ✅ ใส่ ref เข้าไป
+          inputRef={inputRef}
           onKeyDown={handleKeyDown}
           sx={{ flexGrow: 1 }}
         />
@@ -77,8 +83,6 @@ function PeoplePage({ people, setPeople }) {
           </IconButton>
         </Box>
       </Box>
-
-      {/* รายชื่อคน */}
       <Box sx={{ mt: 3 }}>
         <h3>รายชื่อคนที่เพิ่ม:</h3>
         <ul
@@ -94,26 +98,28 @@ function PeoplePage({ people, setPeople }) {
         >
           {people.map((person, index) => {
             const isDark = isDarkColor(person.color);
+            const textColor = isDark ? '#f5f5f5' : '#212121';
             return (
               <li
-                key={index}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  border: '0px solid #ccc',
-                  borderRadius: '4px',
-                  padding: '4px 8px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  backgroundColor: person.color,
-                  color: isDark ? '#fff' : '#000',
-                }}
-              >
-                {person.name}
-              </li>
-            );
-          })}
-        </ul>
+              key={index}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                borderRadius: '8px',
+                padding: '6px 12px',
+                marginRight: '8px',
+                marginBottom: '8px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                backgroundColor: person.color,
+                color: textColor,
+              }}
+            >
+              {person.name}
+            </li>
+          );
+        })}
+      </ul>
       </Box>
     </Box>
   );
