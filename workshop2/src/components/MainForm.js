@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-const Test = () => {
+const MainForm = () => {
   const [name, setName] = useState("");
-  const [salary, setSalary] = useState(0);
+  const [salary, setSalary] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -69,4 +69,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default MainForm;

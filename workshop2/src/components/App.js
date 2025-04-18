@@ -1,10 +1,9 @@
-import { useState } from "react";
-import Test from "./Test";
+import MainForm from "./MainForm";
 
 function App() {
   return (
     <>
-      <Test/>
+      <MainForm/>
     </>
   );
 }
