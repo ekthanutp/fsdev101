@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DeleteList } from "./DeleteList";
 
 const MainForm = () => {
   const [name, setName] = useState("");
@@ -27,6 +28,14 @@ const MainForm = () => {
         setName("");
         setSalary(0);
   };
+
+  const handleDelete = (id)=>{
+    //console.log('Delete updated 1:',id);
+    const updatedData = DeleteList(id,data)
+    //console.log('Delete updated 2:',DeleteList(id,data));
+    
+    setData(updatedData)
+  }
 
   return (
     <>
@@ -57,6 +66,7 @@ const MainForm = () => {
                     <td>{e.id}</td>
                     <td>{e.name}</td>
                     <td>{e.salary}</td>
+                    <td><button onClick={()=> handleDelete(e.id)}>ลบ</button></td>
                 </tr>
             ))}
         </tbody>
