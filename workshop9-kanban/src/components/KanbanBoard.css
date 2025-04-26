@@ -1,74 +1,125 @@
+/* KanbanBoard.css */
+
+/* Desktop */
 .kanban-board {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: #f3f4f6;
-    min-height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f3f4f6;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.kanban-column {
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.kanban-column-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.25rem;
+}
+
+/* สีของแต่ละกล่อง */
+.planning {
+  background-color: #fef3c7; /* เหลืองอ่อน */
+}
+
+.engineering {
+  background-color: #d1fae5; /* เขียวอ่อน */
+}
+
+.preparation {
+  background-color: #e0f2fe; /* ฟ้าอ่อน */
+}
+
+.production {
+  background-color: #e9d5ff; /* ม่วงอ่อน */
+}
+
+.service {
+  background-color: #fde68a; /* ทองอ่อน */
+}
+
+/* สี task จะปรับตาม column */
+.kanban-task {
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.2s;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.task-in-planning {
+  background-color: #fde68a;
+}
+
+.task-in-planning:hover {
+  background-color: #fbbf24; /* เปลี่ยนสีเมื่อ hover */
+}
+
+.task-in-engineering {
+  background-color: #6ee7b7;
+}
+
+.task-in-engineering:hover {
+  background-color: #34d399; /* เปลี่ยนสีเมื่อ hover */
+}
+
+.task-in-preparation {
+  background-color: #bae6fd;
+}
+
+.task-in-preparation:hover {
+  background-color: #60a5fa; /* เปลี่ยนสีเมื่อ hover */
+}
+
+.task-in-production {
+  background-color: #c4b5fd;
+}
+
+.task-in-production:hover {
+  background-color: #a78bfa; /* เปลี่ยนสีเมื่อ hover */
+}
+
+.task-in-service {
+  background-color: #fcd34d;
+}
+
+.task-in-service:hover {
+  background-color: #fbbf24; /* เปลี่ยนสีเมื่อ hover */
+}
+
+/* Media Query สำหรับมือถือ */
+@media (max-width: 768px) {
+  .kanban-board {
+    flex-direction: column; /* เปลี่ยนเป็น column สำหรับมือถือ */
+    gap: 0.5rem;
+    padding: 0.5rem;
   }
-  
+
   .kanban-column {
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    flex: 1 1 0;
-    min-width: 0;
+    width: 100%; /* ให้แต่ละคอลัมน์เต็มความกว้าง */
+    box-sizing: border-box;
+    margin-bottom: 1rem; /* เว้นระยะห่างระหว่างคอลัมน์ */
   }
-  
+
   .kanban-column-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #e5e7eb;
+    font-size: 1rem;
     padding-bottom: 0.25rem;
   }
-  
-  /* สีของแต่ละกล่อง */
-  .planning {
-    background-color: #fef3c7; /* เหลืองอ่อน */
-  }
-  
-  .engineering {
-    background-color: #d1fae5; /* เขียวอ่อน */
-  }
-  
-  .preparation {
-    background-color: #e0f2fe; /* ฟ้าอ่อน */
-  }
-  
-  .production {
-    background-color: #e9d5ff; /* ม่วงอ่อน */
-  }
-  
-  .service {
-    background-color: #fde68a; /* ทองอ่อน */
-  }
-  
-  /* สี task จะปรับตาม column */
+
   .kanban-task {
-    border-radius: 0.375rem;
+    font-size: 0.875rem;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
-    transition: background-color 0.2s;
-    font-size: 0.95rem;
-    font-weight: 500;
   }
-  
-  /* สี task แยกตาม column */
-  .task-in-planning {
-    background-color: #fde68a;
-  }
-  .task-in-engineering {
-    background-color: #6ee7b7;
-  }
-  .task-in-preparation {
-    background-color: #bae6fd;
-  }
-  .task-in-production {
-    background-color: #c4b5fd;
-  }
-  .task-in-service {
-    background-color: #fcd34d;
-  }
-  
+}

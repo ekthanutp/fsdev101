@@ -1,0 +1,66 @@
+/* DetailPane.css */
+
+/* Style สำหรับ Desktop */
+.detail-pane {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background-color: #f4f4f4;
+    padding: 2rem;
+    box-shadow: -4px 0px 20px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+  }
+  
+  .detail-pane-content {
+    max-height: 90%;
+    overflow-y: auto;
+  }
+  
+  .detail-pane h3 {
+    margin-top: 0;
+  }
+  
+  .detail-pane button {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+  }
+  
+  .detail-pane button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Media Query สำหรับมือถือ */
+  @media (max-width: 768px) {
+    .detail-pane {
+      width: 100%; /* ให้เต็มหน้าจอในมือถือ */
+      height: 100%;
+      top: 0;
+      left: 0; /* เพิ่ม left เพื่อจัดตำแหน่งให้อยู่ขอบซ้าย */
+      padding: 1rem;
+      box-shadow: none;
+      box-sizing: border-box; /* เพิ่ม box-sizing เพื่อให้ padding คำนวณรวมใน width */
+    }
+  
+    .detail-pane-content {
+      padding: 10px;
+      max-height: 80%;
+      overflow-y: auto;
+    }
+  
+    .detail-pane h3 {
+      font-size: 1.2rem;
+    }
+  
+    .detail-pane button {
+      width: 100%; /* ปรับปุ่มให้เต็มความกว้างในมือถือ */
+      padding: 0.75rem;
+    }
+  }
+  

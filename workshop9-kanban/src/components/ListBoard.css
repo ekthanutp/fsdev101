@@ -1,0 +1,126 @@
+/* ListBoard.css */
+
+/* Desktop */
+.list-board {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fafafa;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-item {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 1rem;
+}
+
+.list-item:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.list-item-status {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 0.5em 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.planning {
+    background-color: #fef3c7; /* เหลืองอ่อน */
+}
+
+.engineering {
+    background-color: #d1fae5; /* เขียวอ่อน */
+}
+
+.preparation {
+    background-color: #e0f2fe; /* ฟ้าอ่อน */
+}
+
+.production {
+    background-color: #e9d5ff; /* ม่วงอ่อน */
+}
+
+.service {
+    background-color: #fde68a; /* ทองอ่อน */
+}
+
+.list-item-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #374151;
+    flex-grow: 1;
+    margin-right: 1rem;
+}
+
+.list-item-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.list-item-actions button {
+    background-color: #4caf50;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list-item-actions button:hover {
+    background-color: #45a049;
+}
+
+/* Media Query สำหรับมือถือ */
+@media (max-width: 768px) {
+    /* สำหรับการจัดการขนาด ListBoard */
+    .list-board {
+        padding: 1rem;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* สำหรับแต่ละ item ใน list */
+    .list-item {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* เปลี่ยนขนาดของ title และ status สำหรับมือถือ */
+    .list-item-title {
+        font-size: 0.9rem;
+    }
+
+    .list-item-status {
+        font-size: 0.75rem;
+    }
+
+    /* เปลี่ยนขนาดของ action button สำหรับมือถือ */
+    .list-item-actions button {
+        padding: 0.4rem;
+        font-size: 0.875rem;
+    }
+}

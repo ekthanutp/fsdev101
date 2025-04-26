@@ -1,9 +1,9 @@
-import KanbanBoard from "./KanbanBoard";
+import MainBoard from "./MainBoard";
 
 function App() {
   return (
     <div className="App">
-      <KanbanBoard/>
+      <MainBoard/>
     </div>
   );
 }
